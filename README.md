@@ -1,7 +1,7 @@
 1, ### Task 0: Install a ubuntu 16.04 server 64-bit
 
 download http://releases.ubuntu.com/16.04/ubuntu-16.04.6-server-amd64.iso
-install, meet one bug, Chineses lanage will make one issue, the disk issue
+install, meet one bug, Chineses lanuage will make one issue, the disk issue
 
 sudo mkdir /etc/ipstables;
 vi /etc/iptables/rules.v4
@@ -202,8 +202,14 @@ https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
 
 Expect output: https://127.0.0.1:31081 (asking for token)
 
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta8/aio/deploy/recommended.yaml
+
+if meet some China network issue, we can pull docker imaes from aliyuan, and tag it  
+
 docker pull registry.cn-hangzhou.aliyuncs.com/rsqlh/kubernetes-dashboard:v1.10.1
 docker tag registry.cn-hangzhou.aliyuncs.com/rsqlh/kubernetes-dashboard:v1.10.1 k8s.gcr.io/kubernetes-dashboard-amd64:v1.10.1 
+
+
 
 
 
