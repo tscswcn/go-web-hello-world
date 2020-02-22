@@ -211,6 +211,8 @@ docker tag registry.cn-hangzhou.aliyuncs.com/rsqlh/kubernetes-dashboard:v1.10.1 
 
 figure out how to generate token to login to the dashboard and publish the procedure to the gitlab.
 
+kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}') | grep kubernetes.io/service-account-token
+
 --------------------------------------
 
 ### Task 13: publish your work
