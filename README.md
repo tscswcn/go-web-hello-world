@@ -40,10 +40,10 @@ sudo iptables -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
 Task 1: Update system
 sudo apt update sudo apt upgrade
 
-Task 2: install gitlab-ce version in the host
-sudo apt-get install -y curl openssh-server ca-certificates 
-sudo apt-get install -y postfix #select “Internet Site”
-并按Enter键，其他选择则默认
+Task 2: install gitlab-ce version in the host  
+sudo apt-get install -y curl openssh-server ca-certificates   
+sudo apt-get install -y postfix #select “Internet Site”  
+并按Enter键，其他选择则默认  
 
 curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
 
@@ -87,7 +87,9 @@ func main() {
     http.ListenAndServe(":8081", nil)  
 }  
 
-3,run the application after built, curl http://127.0.0.1:8081 get "Go Web Hello World!" messages 4, write one Dockerfile to build one image
+3,run the application after built, curl http://127.0.0.1:8081  
+I will get "Go Web Hello World!" messages     
+4, write one Dockerfile to build one image   
 
 #source FROM golang:latest   
 #author MAINTAINER luopeng "755200@qq.com"   
@@ -101,12 +103,12 @@ docker build -t go-web-hello-world .
 
 5,### Task 5: install docker https://docs.docker.com/install/linux/docker-ce/ubuntu/ 
 
-sudo apt-get remove docker docker-engine docker-ce docker.io 
-sudo apt-get update apt-get install apt-transport-https ca-certificates curl
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - 
-sudo add-apt-repository \ "deb [arch=amd64] https://download.docker.com/linux/ubuntu \ $(lsb_release -cs) \stable" apt-get update 
-sudo apt-get install docker-engine 
-docker version
+sudo apt-get remove docker docker-engine docker-ce docker.io   
+sudo apt-get update apt-get install apt-transport-https ca-certificates curl  
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -   
+sudo add-apt-repository \ "deb [arch=amd64] https://download.docker.com/linux/ubuntu \ $(lsb_release -cs) \stable" apt-get update   
+sudo apt-get install docker-engine   
+using "docker version" to verify
 
 docker run -d -p 8082:8081 go-web-hello-world
 
@@ -115,10 +117,11 @@ curl 127.0.0.1:8082 Go Web Hello World!
 Task 7: push image to dockerhub
 Expect output: https://hub.docker.com/repository/docker/your_dockerhub_id/go-web-hello-world
 
-docker tag go-web-hello-world tscswcn/go-web-hello-world:v0.1 
-docker push tscswcn/go-web-hello-world:v0.1 
-#my dockerhub acoount is tscswcn
-so my image is https://hub.docker.com/repository/docker/tscswcn/go-web-hello-world
+docker tag go-web-hello-world tscswcn/go-web-hello-world:v0.1  
+
+docker push tscswcn/go-web-hello-world:v0.1     
+#my dockerhub acoount is tscswcn   
+so my image is https://hub.docker.com/repository/docker/tscswcn/go-web-hello-world  
 
 
 Task 8: document the procedure in a MarkDown file
