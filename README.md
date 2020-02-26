@@ -136,13 +136,16 @@ https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/
 
 Check in the admin.conf file into the gitlab repo 
 
+I  download kubeadm kubectl kubelet V1.15.1 from ali site  
+
 swapoff -a  
-// I  download kubeadm kubectl kubelet V1.15.1 from ali site  
 wget https://mirrors.aliyun.com/kubernetes/apt/pool/kubectl_1.15.5-00_amd64_bc99b7c6736e0d254263f270a4fec7e303fd6cb77d5ee97209ea7b34e539e4bc.deb 
 
 wget https://mirrors.aliyun.com/kubernetes/apt/pool/kubelet_1.15.5-00_amd64_feba4d4831a02a994a71708885f0fd043b983ae2787a6d2eb1f1ae80b0f199f0.deb   
 
 wget https://mirrors.aliyun.com/kubernetes/apt/pool/kubeadm_1.15.5-00_amd64_cffe0070e6279c8cdca599202eabeab1774b3265d0c590933d5e1115e739668b.deb  
+
+dpkg -i *.deb 
 
 apt-get update && apt-get install -y apt-transport-https 
 
@@ -157,8 +160,12 @@ then,
 
 kubeadm init --pod-network-cidr=192.168.0.0/16 then 
 install  cni netowrk plugin, for exmaple using  flannel plugin
-if want to add second node, using  kubeadm join  to add  worker to cluster,
-if no the second noede, We need taintd master before deploy deployedment。 
+if want to add second node, using  kubeadm join  to add  worker to cluster 
+
+kubeadm join 10.0.1.6:6443 --token stjqkg.lekdd97htlan20ek --discovery-token-ca-cert-hash sha256:4ce61ff16c69c680d12247250ed1b2108c90dd1bf53d7504dfaf35a350ab5976
+
+if no the second noede, We need taint master before deploy deployedment。  
+using "kubectl describe  node ubuntu " to expalain the taint on the master node to untaint using "-", then We can see the pods can be located in the only master node, other we have to add work node the cluster for deploy deployment. 
 
 Task 10: deploy the hello world container
 in the kubernetes above and expose the service to nodePort 31080
