@@ -31,8 +31,11 @@ sudo mkdir /etc/ipstables; vi /etc/iptables/rules.v4
 
 
 sudo iptables -t nat -A PREROUTING -p tcp --dport 22 -j REDIRECT --to-ports 2222 
+
 sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8080 
+
 sudo iptables -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+
 
 Task 1: Update system
 sudo apt update sudo apt upgrade
@@ -55,19 +58,20 @@ nginx['ssl_certificate'] = "/etc/gitlab/ssl/域名的ssl证书.crt"
 nginx['ssl_certificate_key'] = "/etc/gitlab/ssl/域名的ssl证书.key"   
 #保存退出:wq  
 
-我在 10.0.1.6的这个机器上没做，在的本地机器上 设置了1个域名。
+我在 10.0.1.6的这个机器上没做，在的本地机器上 设置了1个域名。  
 sudo gitlab-ctl reconfigure 
-sudo gitlab-ctl restart 
-service sshd start 
-ervice postfix start
+sudo gitlab-ctl restart   
+service sshd start   
+ervice postfix start  
 
-visit ip地址http://106.12.168.234 设置密码，登陆gitlab
+visit ip地址http://106.12.168.234 设置密码，登陆gitlab    
 
-我自己有个域名cloud4u.top,绑在地址上，因此访问cloud4u.top 也可以
-Task 3: create a demo group/project in gitlab
-1,create group and project go-web-hello-world. 
-2,use golang wite one go program: hello.go 
-The fellow ing is code:
+我自己有个域名cloud4u.top,绑在地址上，因此访问cloud4u.top 也可以  
+
+Task 3: create a demo group/project in gitlab  
+1,create group and project go-web-hello-world.   
+2,use golang wite one go program: hello.go   
+The fellowing is my code:
 
 package main
 
@@ -85,13 +89,13 @@ func main() {
 
 3,run the application after built, curl http://127.0.0.1:8081 get "Go Web Hello World!" messages 4, write one Dockerfile to build one image
 
-#source FROM golang:latest 
-#author MAINTAINER luopeng "755200@qq.com" 
-#workdir WORKDIR $GOPATH/ 
-#add code ADD hello.go $GOPATH/ 
-#build RUN go build hello.go 
-#expose EXPOSE 8081 
-#entrypoint ENTRYPOINT ["./hello"]
+#source FROM golang:latest   
+#author MAINTAINER luopeng "755200@qq.com"   
+#workdir WORKDIR $GOPATH/   
+#add code ADD hello.go $GOPATH/   
+#build RUN go build hello.go   
+#expose EXPOSE 8081   
+#entrypoint ENTRYPOINT ["./hello"]  
 
 docker build -t go-web-hello-world .
 
