@@ -5,36 +5,36 @@ download http://releases.ubuntu.com/16.04/ubuntu-16.04.6-server-amd64.iso instal
 
 sudo mkdir /etc/ipstables; vi /etc/iptables/rules.v4
 
-/etc/iptables/rules.v4   
-*filter :INPUT DROP [0:0]   
-:FORWARD ACCEPT [0:0]   
-:OUTPUT ACCEPT [0:0]     
-:syn-flood - [0:0] -A INPUT -i lo -j ACCEPT     
--A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT   
--A INPUT -p tcp -m tcp --dport 22 -j ACCEPT   
--A INPUT -p tcp -m tcp --dport 80 -j ACCEPT   
--A INPUT -p tcp -m tcp --dport 2222 -j ACCEPT   
--A INPUT -p tcp -m tcp --dport 8080 -j ACCEPT   
--A INPUT -p tcp -m tcp --dport 8081 -j ACCEPT   
--A INPUT -p tcp -m tcp --dport 8082 -j ACCEPT   
--A INPUT -p tcp -m tcp --dport 31080 -j ACCEPT   
--A INPUT -p tcp -m tcp --dport 31081 -j ACCEPT  
+    /etc/iptables/rules.v4   
+    *filter :INPUT DROP [0:0]   
+    :FORWARD ACCEPT [0:0]   
+    :OUTPUT ACCEPT [0:0]     
+    :syn-flood - [0:0] -A INPUT -i lo -j ACCEPT     
+     -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT   
+     -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT   
+     -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT   
+     -A INPUT -p tcp -m tcp --dport 2222 -j ACCEPT   
+     -A INPUT -p tcp -m tcp --dport 8080 -j ACCEPT   
+     -A INPUT -p tcp -m tcp --dport 8081 -j ACCEPT   
+     -A INPUT -p tcp -m tcp --dport 8082 -j ACCEPT   
+     -A INPUT -p tcp -m tcp --dport 31080 -j ACCEPT   
+     -A INPUT -p tcp -m tcp --dport 31081 -j ACCEPT  
 
--A INPUT -p icmp -m limit --limit 100/sec --limit-burst 100 -j ACCEPT   
--A INPUT -p icmp -m limit --limit 1/s --limit-burst 10 -j ACCEPT   
--A INPUT -p tcp -m tcp --tcp-flags FIN,SYN,RST,ACK SYN -j syn-flood   
--A INPUT -j REJECT --reject-with icmp-host-prohibited   
--A syn-flood -p tcp -m limit --limit 3/sec --limit-burst 6 -j RETURN   
--A syn-flood -j REJECT --reject-with icmp-port-unreachable COMMIT 
+     -A INPUT -p icmp -m limit --limit 100/sec --limit-burst 100 -j ACCEPT   
+     -A INPUT -p icmp -m limit --limit 1/s --limit-burst 10 -j ACCEPT   
+     -A INPUT -p tcp -m tcp --tcp-flags FIN,SYN,RST,ACK SYN -j syn-flood   
+     -A INPUT -j REJECT --reject-with icmp-host-prohibited   
+     -A syn-flood -p tcp -m limit --limit 3/sec --limit-burst 6 -j RETURN   
+     -A syn-flood -j REJECT --reject-with icmp-port-unreachable COMMIT 
 
 :wq save to exit sudo iptables-restore < /etc/iptables/rules.v4
 
 
-sudo iptables -t nat -A PREROUTING -p tcp --dport 22 -j REDIRECT --to-ports 2222 
+    sudo iptables -t nat -A PREROUTING -p tcp --dport 22 -j REDIRECT --to-ports 2222 
 
-sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8080 
+    sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8080 
 
-sudo iptables -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+    sudo iptables -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
 
 
 Task 1: Update system
@@ -45,24 +45,27 @@ sudo apt-get install -y curl openssh-server ca-certificates
 sudo apt-get install -y postfix #select “Internet Site”  
 并按Enter键，其他选择则默认  
 
-curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
+    curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
 
-sudo apt-get update sudo EXTERNAL_URL="http://10.0.1.6" apt-get install gitlab-ce
+    sudo apt-get update 
+    sudo EXTERNAL_URL="http://10.0.1.6" apt-get install gitlab-ce
 
 my machine ip addr is  10.0.1.6  
 配置https访问 #将ssl证书放入/etc/gitlab/ssl   
 sudo vim /etc/gitlab/gitlab.rb   
-external_url 'https://域名' nginx['enable'] = true   
-nginx['redirect_http_to_https'] =true   
-nginx['ssl_certificate'] = "/etc/gitlab/ssl/域名的ssl证书.crt"   
-nginx['ssl_certificate_key'] = "/etc/gitlab/ssl/域名的ssl证书.key"   
+
+    external_url 'https://域名' nginx['enable'] = true    
+    nginx['redirect_http_to_https'] =true   
+    nginx['ssl_certificate'] = "/etc/gitlab/ssl/域名的ssl证书.crt"   
+    nginx['ssl_certificate_key'] = "/etc/gitlab/ssl/域名的ssl证书.key"   
 #保存退出:wq  
 
 我在 10.0.1.6的这个机器上没做，在的本地机器上 设置了1个域名。  
-sudo gitlab-ctl reconfigure 
-sudo gitlab-ctl restart   
-service sshd start   
-ervice postfix start  
+
+    sudo gitlab-ctl reconfigure 
+    sudo gitlab-ctl restart   
+    service sshd start   
+    service postfix start  
 
 visit ip地址http://106.12.168.234 设置密码，登陆gitlab    
 
@@ -93,13 +96,13 @@ The fellowing is my code:
 I will get "Go Web Hello World!" messages     
 4, write one Dockerfile to build one image   
 
-#source FROM golang:latest   
-#author MAINTAINER luopeng "755200@qq.com"   
-#workdir WORKDIR $GOPATH/   
-#add code ADD hello.go $GOPATH/   
-#build RUN go build hello.go   
-#expose EXPOSE 8081   
-#entrypoint ENTRYPOINT ["./hello"]  
+    #source FROM golang:latest   
+    #author MAINTAINER luopeng "755200@qq.com"   
+    #workdir WORKDIR $GOPATH/   
+    #add code ADD hello.go $GOPATH/   
+    #build RUN go build hello.go   
+    #expose EXPOSE 8081   
+    #entrypoint ENTRYPOINT ["./hello"]  
 
 docker build -t go-web-hello-world .
 
