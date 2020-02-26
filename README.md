@@ -38,20 +38,22 @@ Task 1: Update system
 sudo apt update sudo apt upgrade
 
 Task 2: install gitlab-ce version in the host
-sudo apt-get install -y curl openssh-server ca-certificates sudo apt-get install -y postfix #select “Internet Site”并按Enter键，其他选择则默认
+sudo apt-get install -y curl openssh-server ca-certificates 
+sudo apt-get install -y postfix #select “Internet Site”
+并按Enter键，其他选择则默认
 
 curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
 
 sudo apt-get update sudo EXTERNAL_URL="http://10.0.1.6" apt-get install gitlab-ce
 
-my machine ip addr is  10.0.1.6
-配置https访问 #将ssl证书放入/etc/gitlab/ssl 
-sudo vim /etc/gitlab/gitlab.rb 
-external_url 'https://域名' nginx['enable'] = true 
-nginx['redirect_http_to_https'] =true 
-nginx['ssl_certificate'] = "/etc/gitlab/ssl/域名的ssl证书.crt" 
-nginx['ssl_certificate_key'] = "/etc/gitlab/ssl/域名的ssl证书.key" 
-#保存退出:wq
+my machine ip addr is  10.0.1.6  
+配置https访问 #将ssl证书放入/etc/gitlab/ssl   
+sudo vim /etc/gitlab/gitlab.rb   
+external_url 'https://域名' nginx['enable'] = true   
+nginx['redirect_http_to_https'] =true   
+nginx['ssl_certificate'] = "/etc/gitlab/ssl/域名的ssl证书.crt"   
+nginx['ssl_certificate_key'] = "/etc/gitlab/ssl/域名的ssl证书.key"   
+#保存退出:wq  
 
 我在 10.0.1.6的这个机器上没做，在的本地机器上 设置了1个域名。
 sudo gitlab-ctl reconfigure 
@@ -75,13 +77,10 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {  
-		fmt.Fprintf(w, "Go Web Hello World!")  
-		//fmt.print("Go Web Hello World!")  
-		//fmt.Print("Go Web Hello World!")  
+    http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {  
+	fmt.Fprintf(w, "Go Web Hello World!")    
 	})  
-
-	http.ListenAndServe(":8081", nil)  
+    http.ListenAndServe(":8081", nil)  
 }  
 
 3,run the application after built, curl http://127.0.0.1:8081 get "Go Web Hello World!" messages 4, write one Dockerfile to build one image
