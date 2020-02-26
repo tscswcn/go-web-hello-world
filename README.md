@@ -66,14 +66,22 @@ Task 3: create a demo group/project in gitlab
 1,create group and project go-web-hello-world. 
 2,use golang wite one go program: hello.go 
 The fellow ing is code:
+
 package main
 
-import ( "fmt" "net/http" )
+import (
+"fmt"
+"net/http"
+)
 
-func main() { 
-    http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) { fmt.Fprintf(w, "Go Web Hello World!") //fmt.print("Go Web Hello World!") //fmt.Print("Go Web Hello World!") })
+func main() {
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Go Web Hello World!")
+		//fmt.print("Go Web Hello World!")
+		//fmt.Print("Go Web Hello World!")
+	})
 
-http.ListenAndServe(":8081", nil)
+	http.ListenAndServe(":8081", nil)
 }
 
 3,run the application after built, curl http://127.0.0.1:8081 get "Go Web Hello World!" messages 4, write one Dockerfile to build one image
