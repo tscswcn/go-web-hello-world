@@ -123,7 +123,7 @@ Expect output: https://hub.docker.com/repository/docker/your_dockerhub_id/go-web
 
     docker tag go-web-hello-world tscswcn/go-web-hello-world:v0.1  
     docker push tscswcn/go-web-hello-world:v0.1     
-#my dockerhub acoount is tscswcn   
+my dockerhub acoount is tscswcn   
 so my image is https://hub.docker.com/repository/docker/tscswcn/go-web-hello-world  
 
 
@@ -170,8 +170,11 @@ Expect output:
 
     kubectl run goweb1 --image=tscswcn/go-web-hello-world:v1 --port=8081 --hostport=31080
     curl http://127.0.0.1:31080
+    
 we will get Go Web Hello World!
 yaml file has been checked in gitlab repo
+
+
 ------------------------------------
 
 ### Task 11: install kubernetes dashboard
