@@ -133,14 +133,20 @@ https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/
 
 Check in the admin.conf file into the gitlab repo 
 
-swapoff -a  # I select k8s V1.15.5
+swapoff -a  
+# I select k8s V1.15.5  
 wget https://mirrors.aliyun.com/kubernetes/apt/pool/kubectl_1.15.5-00_amd64_bc99b7c6736e0d254263f270a4fec7e303fd6cb77d5ee97209ea7b34e539e4bc.deb 
-wget https://mirrors.aliyun.com/kubernetes/apt/pool/kubelet_1.15.5-00_amd64_feba4d4831a02a994a71708885f0fd043b983ae2787a6d2eb1f1ae80b0f199f0.deb 
-wget https://mirrors.aliyun.com/kubernetes/apt/pool/kubeadm_1.15.5-00_amd64_cffe0070e6279c8cdca599202eabeab1774b3265d0c590933d5e1115e739668b.deb
+
+wget https://mirrors.aliyun.com/kubernetes/apt/pool/kubelet_1.15.5-00_amd64_feba4d4831a02a994a71708885f0fd043b983ae2787a6d2eb1f1ae80b0f199f0.deb   
+
+wget https://mirrors.aliyun.com/kubernetes/apt/pool/kubeadm_1.15.5-00_amd64_cffe0070e6279c8cdca599202eabeab1774b3265d0c590933d5e1115e739668b.deb  
 
 apt-get update && apt-get install -y apt-transport-https 
+
 curl https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | apt-key add - cat </etc/apt/sources.list.d/kubernetes.list deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main EOF 
+
 apt-get update 
+
 apt-get install -y kubelet kubeadm kubectl
 
 because network policy in  China, we need to download iamges from ali site and tag them into  cr.k8s.io/...  iamges 
