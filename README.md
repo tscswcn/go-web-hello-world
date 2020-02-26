@@ -80,7 +80,8 @@ import (
 "net/http"
 )
 
-func main() {
+func main() {  
+
     &ensp;&ensp;&ensp;&ensp;http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {  
 	&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;fmt.Fprintf(w, "Go Web Hello World!")    
 	&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;})  
