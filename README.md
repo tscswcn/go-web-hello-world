@@ -81,10 +81,10 @@ import (
 )
 
 func main() {
-    http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {  
-	fmt.Fprintf(w, "Go Web Hello World!")    
-	})  
-    http.ListenAndServe(":8081", nil)  
+    &ensp;&ensp;&ensp;&ensp;http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {  
+	&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;fmt.Fprintf(w, "Go Web Hello World!")    
+	&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;})  
+    &ensp;&ensp;&ensp;&ensp;&ensp;http.ListenAndServe(":8081", nil)  
 }  
 
 3,run the application after built, curl http://127.0.0.1:8081  
@@ -202,8 +202,6 @@ using this token to login dashboard console
 ### Task 13: publish your work
 
 push all files/procedures in your local gitlab repo to remote github repo (e.g. https://github.com/your_github_id/go-web-hello-world)
-
-if this is for an interview session, please send it to bo.cui@ericsson.com, no later than two calendar days after the interview.
 
 has submit to github.com/tscswcn/go-web-hello-world
 
