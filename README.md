@@ -134,7 +134,7 @@ https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/
 Check in the admin.conf file into the gitlab repo 
 
 swapoff -a  
-# I select k8s V1.15.5  
+// I  download kubeadm kubectl kubelet V1.15.1 from ali site  
 wget https://mirrors.aliyun.com/kubernetes/apt/pool/kubectl_1.15.5-00_amd64_bc99b7c6736e0d254263f270a4fec7e303fd6cb77d5ee97209ea7b34e539e4bc.deb 
 
 wget https://mirrors.aliyun.com/kubernetes/apt/pool/kubelet_1.15.5-00_amd64_feba4d4831a02a994a71708885f0fd043b983ae2787a6d2eb1f1ae80b0f199f0.deb   
