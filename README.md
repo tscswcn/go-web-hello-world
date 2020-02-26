@@ -158,11 +158,11 @@ apt-get install -y kubelet kubeadm kubectl
 because network policy in  China, we need to download iamges from ali site and tag them into  cr.k8s.io/...  iamges 
 then,
 
-kubeadm init --pod-network-cidr=192.168.0.0/16 then 
+ kubeadm init --pod-network-cidr=192.168.0.0/16 then 
 install  cni netowrk plugin, for exmaple using  flannel plugin
-if want to add second node, using  kubeadm join  to add  worker to cluster 
+ if want to add second node, using  kubeadm join  to add  worker to cluster 
 
-kubeadm join 10.0.1.6:6443 --token stjqkg.lekdd97htlan20ek --discovery-token-ca-cert-hash sha256:4ce61ff16c69c680d12247250ed1b2108c90dd1bf53d7504dfaf35a350ab5976
+ kubeadm join 10.0.1.6:6443 --token stjqkg.lekdd97htlan20ek --discovery-token-ca-cert-hash sha256:4ce61ff16c69c680d12247250ed1b2108c90dd1bf53d7504dfaf35a350ab5976
 
 if no the second noede, We need taint master before deploy deployedment。  
 using "kubectl describe  node ubuntu " to expalain the taint on the master node to untaint using "-", then We can see the pods can be located in the only master node, other we have to add work node the cluster for deploy deployment. 
@@ -172,10 +172,10 @@ in the kubernetes above and expose the service to nodePort 31080
 
 Expect output:
 
-curl http://127.0.0.1:31080
-Go Web Hello World!
+ curl http://127.0.0.1:31080
+we will get Go Web Hello World!
 
-kubectl run goweb1 --image=tscswcn/go-web-hello-world:v1 --port=8081 --hostport=31080
+ kubectl run goweb1 --image=tscswcn/go-web-hello-world:v1 --port=8081 --hostport=31080
 yaml file has check in gitlab repo
 
 
@@ -189,12 +189,12 @@ https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
 
 Expect output: https://127.0.0.1:31081 (asking for token)
 
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta8/aio/deploy/recommended.yaml
+ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta8/aio/deploy/recommended.yaml
 
 if meet some China network issue, we can pull docker imaes from aliyun, and tag it  
 
-docker pull registry.cn-hangzhou.aliyuncs.com/rsqlh/kubernetes-dashboard:v1.10.1  
-docker tag registry.cn-hangzhou.aliyuncs.com/rsqlh/kubernetes-dashboard:v1.10.1 k8s.gcr.io/kubernetes-dashboard-amd64:v1.10.1   
+ docker pull registry.cn-hangzhou.aliyuncs.com/rsqlh/kubernetes-dashboard:v1.10.1  
+ docker tag registry.cn-hangzhou.aliyuncs.com/rsqlh/kubernetes-dashboard:v1.10.1 k8s.gcr.io/kubernetes-dashboard-amd64:v1.10.1   
 
 
 
