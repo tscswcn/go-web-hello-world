@@ -31,9 +31,7 @@ sudo mkdir /etc/ipstables; vi /etc/iptables/rules.v4
 
 
     sudo iptables -t nat -A PREROUTING -p tcp --dport 22 -j REDIRECT --to-ports 2222 
-
     sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8080 
-
     sudo iptables -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
 
 
@@ -124,7 +122,6 @@ Task 7: push image to dockerhub
 Expect output: https://hub.docker.com/repository/docker/your_dockerhub_id/go-web-hello-world
 
     docker tag go-web-hello-world tscswcn/go-web-hello-world:v0.1  
-
     docker push tscswcn/go-web-hello-world:v0.1     
 #my dockerhub acoount is tscswcn   
 so my image is https://hub.docker.com/repository/docker/tscswcn/go-web-hello-world  
@@ -143,19 +140,13 @@ I  download kubeadm kubectl kubelet V1.15.1 from ali site
 
     swapoff -a  
     wget https://mirrors.aliyun.com/kubernetes/apt/pool/kubectl_1.15.5-00_amd64_bc99b7c6736e0d254263f270a4fec7e303fd6cb77d5ee97209ea7b34e539e4bc.deb 
-
     wget https://mirrors.aliyun.com/kubernetes/apt/pool/kubelet_1.15.5-00_amd64_feba4d4831a02a994a71708885f0fd043b983ae2787a6d2eb1f1ae80b0f199f0.deb   
-
     wget https://mirrors.aliyun.com/kubernetes/apt/pool/kubeadm_1.15.5-00_amd64_cffe0070e6279c8cdca599202eabeab1774b3265d0c590933d5e1115e739668b.deb  
 
     dpkg -i *.deb 
-
     apt-get update && apt-get install -y apt-transport-https 
-
     curl https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | apt-key add - cat </etc/apt/sources.list.d/kubernetes.list deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main EOF 
-
     apt-get update 
-
     apt-get install -y kubelet kubeadm kubectl
 
 because network policy in  China, we need to download iamges from ali site and tag them into  cr.k8s.io/...  iamges 
