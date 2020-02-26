@@ -82,10 +82,10 @@ import (
 
 func main() {  
 
-    &ensp;&ensp;&ensp;&ensp;http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {  
-	&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;fmt.Fprintf(w, "Go Web Hello World!")    
-	&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;})  
-    &ensp;&ensp;&ensp;&ensp;&ensp;http.ListenAndServe(":8081", nil)  
+    http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {  
+	fmt.Fprintf(w, "Go Web Hello World!")    
+    })  
+    http.ListenAndServe(":8081", nil)  
 }  
 
 3,run the application after built, curl http://127.0.0.1:8081  
@@ -107,7 +107,8 @@ docker build -t go-web-hello-world .
 sudo apt-get remove docker docker-engine docker-ce docker.io   
 sudo apt-get update apt-get install apt-transport-https ca-certificates curl  
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -   
-sudo add-apt-repository \ "deb [arch=amd64] https://download.docker.com/linux/ubuntu \ $(lsb_release -cs) \stable" apt-get update   
+sudo add-apt-repository \ "deb [arch=amd64] https://download.docker.com/linux/ubuntu \ $(lsb_release -cs) \stable"   
+apt-get update     
 sudo apt-get install docker-engine   
 using "docker version" to verify
 
@@ -182,10 +183,10 @@ Expect output: https://127.0.0.1:31081 (asking for token)
 
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta8/aio/deploy/recommended.yaml
 
-if meet some China network issue, we can pull docker imaes from aliyuan, and tag it  
+if meet some China network issue, we can pull docker imaes from aliyun, and tag it  
 
-docker pull registry.cn-hangzhou.aliyuncs.com/rsqlh/kubernetes-dashboard:v1.10.1
-docker tag registry.cn-hangzhou.aliyuncs.com/rsqlh/kubernetes-dashboard:v1.10.1 k8s.gcr.io/kubernetes-dashboard-amd64:v1.10.1 
+docker pull registry.cn-hangzhou.aliyuncs.com/rsqlh/kubernetes-dashboard:v1.10.1  
+docker tag registry.cn-hangzhou.aliyuncs.com/rsqlh/kubernetes-dashboard:v1.10.1 k8s.gcr.io/kubernetes-dashboard-amd64:v1.10.1   
 
 
 
