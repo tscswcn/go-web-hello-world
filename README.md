@@ -96,13 +96,13 @@ The fellowing is my code:
 I will get "Go Web Hello World!" messages     
 4, write one Dockerfile to build one image   
 
-    #source FROM golang:latest   
-    #author MAINTAINER luopeng "755200@qq.com"   
-    #workdir WORKDIR $GOPATH/   
-    #add code ADD hello.go $GOPATH/   
-    #build RUN go build hello.go   
-    #expose EXPOSE 8081   
-    #entrypoint ENTRYPOINT ["./hello"]  
+    source FROM golang:latest   
+    author MAINTAINER luopeng "755200@qq.com"   
+    workdir WORKDIR $GOPATH/   
+    add code ADD hello.go $GOPATH/   
+    build RUN go build hello.go   
+    expose EXPOSE 8081   
+    entrypoint ENTRYPOINT ["./hello"]  
 
 docker build -t go-web-hello-world .
 
