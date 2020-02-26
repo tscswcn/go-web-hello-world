@@ -179,7 +179,7 @@ Expect output:
 we will get Go Web Hello World!
 
     kubectl run goweb1 --image=tscswcn/go-web-hello-world:v1 --port=8081 --hostport=31080
-yaml file has check in gitlab repo
+yaml file has been checked in gitlab repo
 
 
 ------------------------------------
