@@ -172,6 +172,11 @@ Expect output:
     curl http://127.0.0.1:31080
     
 we will get Go Web Hello World!
+
+notice: 如果 要 expose svc 的话
+         sudo kubectl expose deploy/goweb1 --type=NodePort --port=8081 
+
+
 yaml file has been checked in gitlab repo
 
 
