@@ -1,17 +1,17 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
-  creationTimestamp: "2020-02-17T17:19:28Z"
+  creationTimestamp: "2020-07-22T08:34:33Z"
   generation: 1
   labels:
     run: goweb1
   name: goweb1
   namespace: default
-  resourceVersion: "8020"
+  resourceVersion: "230901"
   selfLink: /apis/extensions/v1beta1/namespaces/default/deployments/goweb1
-  uid: b42428bf-0362-4d64-abb7-0561945c9c8a
+  uid: 2b24af1e-cbf6-11ea-b062-000c29bc6e9b
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
@@ -47,21 +47,21 @@ spec:
       securityContext: {}
       terminationGracePeriodSeconds: 30
 status:
-  availableReplicas: 1
   conditions:
-  - lastTransitionTime: "2020-02-17T17:19:30Z"
-    lastUpdateTime: "2020-02-17T17:19:30Z"
-    message: Deployment has minimum availability.
-    reason: MinimumReplicasAvailable
-    status: "True"
+  - lastTransitionTime: "2020-07-22T08:34:33Z"
+    lastUpdateTime: "2020-07-22T08:34:33Z"
+    message: Deployment does not have minimum availability.
+    reason: MinimumReplicasUnavailable
+    status: "False"
     type: Available
-  - lastTransitionTime: "2020-02-17T17:19:28Z"
-    lastUpdateTime: "2020-02-17T17:19:30Z"
-    message: ReplicaSet "goweb1-599745bb49" has successfully progressed.
-    reason: NewReplicaSetAvailable
+  - lastTransitionTime: "2020-07-22T08:34:33Z"
+    lastUpdateTime: "2020-07-22T08:34:33Z"
+    message: ReplicaSet "goweb1-758df7ff48" is progressing.
+    reason: ReplicaSetUpdated
     status: "True"
     type: Progressing
   observedGeneration: 1
-  readyReplicas: 1
   replicas: 1
+  unavailableReplicas: 1
   updatedReplicas: 1
+
