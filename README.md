@@ -210,7 +210,7 @@ using this token to login dashboard console
 
 --------------------------------------
 
-### Task 13: publish your work
+### Task 13: publish your work docker pull  registry.cn-hangzhou.aliyuncs.com/tscswcn/go-web-hello-world:v1
 
 push all files/procedures in your local gitlab repo to remote github repo (e.g. https://github.com/your_github_id/go-web-hello-world)
 
@@ -218,10 +218,9 @@ has submit to github.com/tscswcn/go-web-hello-world
 
 
 
-
-
-
- 
+update: 2020 -07-22
+for speed limit,  can use 
+docker pull   docker pull  registry.cn-hangzhou.aliyuncs.com/tscswcn/go-web-hello-world:v1
 
 
 
