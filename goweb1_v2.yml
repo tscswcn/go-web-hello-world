@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: goweb1
+  name: goweb1
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      run: goweb1
+  template:
+    metadata:
+      labels:
+        run: goweb1
+    spec:
+      containers:
+      - image: tscswcn/go-web-hello-world:v1
+        imagePullPolicy: IfNotPresent
+        name: goweb1
+        ports:
+        - containerPort: 8081
+          hostPort: 31080
+          protocol: TCP
+
+
+
